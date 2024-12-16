@@ -5,7 +5,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3000; // Usa la porta dinamica fornita da Render o 3000 per sviluppo locale
 
 // Configurazione del database
 const pool = new Pool({
@@ -56,7 +56,7 @@ app.put("/users/:id", async (req, res) => {
 	const { name, profession } = req.body;
 	try {
 		const result = await pool.query(
-			"UPDATE users SET name = $1, description = $2 WHERE id = $3 RETURNING *",
+			"UPDATE users SET name = $1, profession = $2 WHERE id = $3 RETURNING *",
 			[name, profession, id]
 		);
 		if (result.rows.length === 0) {
