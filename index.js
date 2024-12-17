@@ -53,7 +53,7 @@ app.get("/users/:id", async (req, res) => {
 });
 
 //READ ALL
-app.get("/users/", async (req, res) => {
+app.get("/users", async (req, res) => {
 	try {
 		const result = await pool.query("SELECT * FROM users");
 		if (result.rows.length === 0) {
