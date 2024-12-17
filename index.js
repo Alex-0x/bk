@@ -1,6 +1,7 @@
 const express = require("express");
 const { Pool } = require("pg");
 const dotenv = require("dotenv");
+const cors = require("cors");
 
 dotenv.config();
 
@@ -17,6 +18,7 @@ const pool = new Pool({
 });
 
 // Middleware
+app.use(cors()); // Abilita CORS per tutte le origini
 app.use(express.json());
 
 // Endpoint CRUD
